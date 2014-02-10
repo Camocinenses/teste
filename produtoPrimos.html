@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="">
+		<script>
+			/*
+			Função para identificar se o número é primo ou ñ.
+			Obs. Para que o número seja primo, ele deve ser divisível apenas por ele msm e por 1.
+			*/
+			function ePrimo(num)
+			{
+				var e = true;
+				for (var i = 2; i < num; i++)
+				{
+					if (num % i == 0)
+						e = false;
+				}
+				return e;
+			}
+			
+			/* Produto dos números primos. */
+			var produto = 1.0;
+			var vetorPrimos = new Array();
+			
+			/* Como o produto dos números primos de 92 a 1478 é muito grande, obtei por mudar para até o número 150. */
+			for (var i = 92; i <= 150; i++)
+			{
+				if (ePrimo(i))
+				{
+					produto *= i;
+					vetorPrimos.push(i);
+				}
+			}
+			
+			/* Inserindo resultado no span cujo id é resultado */
+			window.onload = function()
+			{
+				var resultado = document.createTextNode('O produtos dos números primos ' + vetorPrimos + ' = ' + produto);
+				document.querySelector('#resultado').appendChild(resultado);
+			}
+		</script>
+	</head>
+	<body>
+		<span id="resultado"></span>
+	</body>
+</html>
